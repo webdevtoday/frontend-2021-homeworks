@@ -7,53 +7,41 @@
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
-const catSaying = 'meow!';
 
-const dog = {
-   legs: 4,
-   hands: 0,
-   name: 'A Dog',
-   gender: 'male',
-   saying: 'woof-woof!',
-   species: 'dog',
-   friends: ['A Man', 'A Woman'],
-};
-const cat = {
-   legs: 4,
-   hands: 0,
-   name: 'A Cat',
-   gender: 'male',
-   saying: catSaying,
-   species: 'cat',
-   friends: ['A Woman'],
-};
-const woman = {
-   legs: 2,
-   hands: 2,
-   name: 'A Woman',
-   gender: 'female',
-   saying: `I'm a woman!`,
-   species: 'human',
-   friends: ['A Man', 'A Cat', 'A Dog'],
-};
-const man = {
-   legs: 2,
-   hands: 2,
-   name: 'A Man',
-   gender: 'male',
-   saying: `I'm a man!`,
-   species: 'human',
-   friends: ['A Woman', 'A Dog', 'A Cat'],
-};
-const catwoman = {
-   legs: 2,
-   hands: 2,
-   name: 'A CatWoman',
-   gender: 'female',
-   saying: catSaying,
-   species: 'human',
-   friends: ['A Cat'],
-};
+class Mammal {
+   legs = 4;
+
+   constructor(name, gender, friends) {
+      this.name = name;
+      this.gender = gender;
+      this.friends = friends;
+   }
+}
+
+class Human extends Mammal {
+   legs = 2;
+   hands = 2;
+   species = 'human';
+
+   constructor(name, gender, saying, friends) {
+      super(name, gender, friends);
+      this.saying = saying;
+   }
+}
+
+class Animal extends Mammal {
+   constructor(name, gender, saying, species, friends) {
+      super(name, gender, friends);
+      this.saying = saying;
+      this.species = species;
+   }
+}
+
+const dog = new Animal('Jhonny', 'male', 'woof-woof!', 'dog', ['Andrew', 'Anastasia']);
+const cat = new Animal('Murka', 'female', 'meow!', 'cat', ['Anastasia']);
+const woman = new Human('Anastasia', 'female', 'I\'m a woman!', ['Andrew', 'Murka', 'Jhonny']);
+const man = new Human('Andrew', 'male', 'I\'m a man!', ['Anastasia', 'Jhonny', 'Murka']);
+const catwoman = new Human('CatWoman', 'female', cat.saying, []);
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
